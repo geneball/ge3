@@ -1,0 +1,99 @@
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>GE3  Feb2023  Gene Ball</title>
+    <link  	rel="stylesheet" 	href="graphed.css" >
+  </head>
+  <body>
+	<div id="header">
+	  <div id="headerContent">
+		<div> <button id='btnZmTo'>ZmTo</button>
+		<button id='btnZmOut'>ZmOut</button>
+		<button id='btnZmIn'>ZmIn</button>
+			<label class='box'> File:
+				<span id="currFileNm"> geom.geom </span> <input type="text" id="fileNmBox" list="txtfiles" autocomplete hidden >
+				<datalist id="txtfiles">
+					<option value="geom.txt" > 
+					<option value="test.txt" > 
+				</datalist>
+				<button id='btnLoad'> Ld </button>
+				<button id='btnGo' hidden > Go </button>
+				<button id='btnStep' hidden > Step </button>
+			</label>
+			<button id="btnSave" > Sv </button>
+			<button id="btnSaveAll" > SvLevs </button>
+			<label class='box'> Ext: <input type='checkbox' id="showExt"> </label>
+			<label class='box'> Deps: <input type='checkbox' id="showDep"> </label>
+			<label class='box'> Guides: <input type='checkbox' id="showGuide"> </label>
+			
+			<span id="refreshStat"> </span>
+
+		<span id="status">  GE3  Feb2023  Gene Ball  </span> <span id="info"> </span>
+		</div>
+		<div id="vardlg">  
+			 <span id="varNm"> var </span> <input type="text" id="varNmBox" value="" class="Name" hidden>
+			 <span id="defType"> = </span>
+			 <span id="varDef"> definition </span> <input type="text" id="varDefBox" value="" hidden>
+		     
+			 <button id="varSv" disabled>Sv</button> 
+			 <button id="varDel" disabled>Del</button>
+			 <label id="confirmDel" hidden>Confirm? 
+			 <button id="varConfirm">Delete</button>
+			 <button id="varCancel">Cancel</button>
+			 </label>
+			 <button id="varIntersect" disabled>ISect</button>
+			 <button id="varSplit" disabled>Split</button>
+			 <!--<label>Style: <input type="text" id="varStyle" value=""> </label> 
+			 <br></!-->
+		     <label> Value: <span id="varVal"></span> </label>
+		</div>
+	  </div>
+	</div>
+
+	<!-- div id="page"> -->
+	  <div id="sideBar">
+		<!--<span id='grp_All' class='caret'> All </span> 
+			<button id="btnGrp"> AddGroup </button><input type="text" id="grpNm" value="" hidden>-->
+		<div class='LevBoxes' id='LvSelect' >
+			<label class='LevBx' > 0 <br> <input type='checkbox' class='LevCk' id='Lev0'> </label>
+			<label class='LevBx' > 1 <br> <input type='checkbox' class='LevCk' id='Lev1'> </label>
+			<label class='LevBx' > 2 <br> <input type='checkbox' class='LevCk' id='Lev2'> </label>
+			<label class='LevBx' > 3 <br> <input type='checkbox' class='LevCk' id='Lev3'> </label>
+			<label class='LevBx' > 4 <br> <input type='checkbox' class='LevCk' id='Lev4'> </label>
+			<label class='LevBx' > 5 <br> <input type='checkbox' class='LevCk' id='Lev5'> </label>
+			<label class='LevBx' > 6 <br> <input type='checkbox' class='LevCk' id='Lev6'> </label>
+			<label class='LevBx' > 7 <br> <input type='checkbox' class='LevCk' id='Lev7'> </label>
+			<label class='LevBx' > 8 <br> <input type='checkbox' class='LevCk' id='Lev8'> </label>
+			<label class='LevBx' > 9 <br> <input type='checkbox' class='LevCk' id='Lev9'> </label>
+			<label class='LevBx' > 10 <br> <input type='checkbox' class='LevCk' id='Lev10'> </label>
+			<label class='LevBx' > 11 <br> <input type='checkbox' class='LevCk' id='Lev11'> </label>
+		</div>
+			
+		<ul id='groups'>
+			<!-- <span id='grp_Defs' class='caret'>Defs </span> <ul id='lst_Defs'></ul>-->
+		</ul> 
+	  </div>
+	  <canvas id="graphCanvas" width="100%" height="100%"></canvas> 
+	<!-- </div> -->
+	<div id='colorSel' class='modal' hidden>
+		<input type='checkbox' id='c_black'  	class='grpColor'>  	<span class='b_black'  	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_red'    	class='grpColor'>  	<span class='b_red'    	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_blue'   	class='grpColor'>  	<span class='b_blue'   	> &nbsp;&nbsp;&nbsp; </span> <br>
+		<input type='checkbox' id='c_green'  	class='grpColor'>   <span class='b_green'  	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_orange' 	class='grpColor'>  	<span class='b_orange' 	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_purple' 	class='grpColor'> 	<span class='b_purple'	> &nbsp;&nbsp;&nbsp; </span> <br>
+		<input type='checkbox' id='c_fuchsia'	class='grpColor'>   <span class='b_fuchsia'	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_lime'   	class='grpColor'>  	<span class='b_lime'   	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_olive'  	class='grpColor'> 	<span class='b_olive' 	> &nbsp;&nbsp;&nbsp; </span> <br>
+		<input type='checkbox' id='c_yellow' 	class='grpColor'>   <span class='b_yellow' 	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_navy'   	class='grpColor'>  	<span class='b_navy'   	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_teal'   	class='grpColor'> 	<span class='b_teal' 	> &nbsp;&nbsp;&nbsp; </span> <br>
+		<input type='checkbox' id='c_aqua'   	class='grpColor'>   <span class='b_aqua'   	> &nbsp;&nbsp;&nbsp; </span>
+		<input type='checkbox' id='c_silver' 	class='grpColor'>  	<span class='b_silver' 	> &nbsp;&nbsp;&nbsp; </span>
+	</div>
+
+	</div>
+  </body>
+  <script src="./renderer.js"></script>
+</html>

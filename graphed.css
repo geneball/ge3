@@ -1,0 +1,162 @@
+:root	{
+        --L0: hsl(  0, 100%, 75%);       --D0: hsl(  0, 100%, 50%);
+        --L1: hsl( 40, 100%, 95%);       --D1: hsl( 40, 100%, 54%);
+        --L2: hsl( 58, 100%, 75%);       --D2: hsl( 58, 100%, 47%);
+        --L3: hsl(120, 100%, 75%);       --D3: hsl(120, 100%, 41%);
+        --L4: hsl(257, 100%, 75%);       --D4: hsl(257, 100%, 50%);
+        --L5: hsl(288, 100%, 75%);       --D5: hsl(288, 100%, 45%);
+        --L6: hsl(312, 100%, 75%);       --D6: hsl(312, 100%, 50%);
+     
+        --C00: #800000;      --C01: #9A6324;
+        --C02: #808000;      --C03: #469990;
+        --C04: #000075;      --C05: #E6194B;
+        --C06: #F58231;      --C07: #ffe119;
+        --C08: #BFEF45;      --C09: #3CB44B;
+        --C10: #42D4F4;      --C11: #4363D8;
+        --C12: #911EB4;      --C13: #F032E6;
+        --C14: #FABED4;      --C15: #FFD8B1;
+        --C16: #FFFAC8;      --C17: #AAFFC3;
+        --C19: #DCEBFF;      --C20: #EEEEEE;
+        --C21: #DDDDDD;      --C22: #444444;
+}
+
+.c_black    { color: black; }
+.c_red      { color: red; }
+.c_blue     { color: blue; }
+.c_green    { color: green; }
+.c_orange   { color: orange; }
+.c_purple   { color: purple; }
+.c_fuchsia  { color: fuchsia; }
+.c_lime   	{ color: lime; }
+.c_olive   	{ color: olive; }
+.c_yellow   { color: yellow; }
+.c_navy   	{ color: navy; }
+.c_teal   	{ color: teal; }
+.c_aqua   	{ color: aqua; }
+.c_silver 	{ color: silver; }
+
+.b_black    { background-color: black;  border: 1px solid black; }
+.b_red      { background-color: red; 	border: 1px solid black; }
+.b_blue     { background-color: blue; 	border: 1px solid black; }
+.b_green    { background-color: green; 	border: 1px solid black; }
+.b_orange   { background-color: orange; border: 1px solid black; }
+.b_purple   { background-color: purple; border: 1px solid black; }
+.b_fuchsia  { background-color: fuchsia;border: 1px solid black; }
+.b_lime   	{ background-color: lime; 	border: 1px solid black; }
+.b_olive   	{ background-color: olive; 	border: 1px solid black; }
+.b_yellow   { background-color: yellow; border: 1px solid black; }
+.b_navy   	{ background-color: navy; 	border: 1px solid black; }
+.b_teal   	{ background-color: teal; 	border: 1px solid black; }
+.b_aqua   	{ background-color: aqua; 	border: 1px solid black; }
+.b_silver 	{ background-color: silver; border: 1px solid black; }
+
+
+.box 		{ border: 1px solid black; margin-bottom: 5px; margin-left: 5px; }
+.off 		{ display: none; }
+
+.modal{ position: fixed;  z-index: 1; background-color: gray; padding: 3px; }
+
+#colorsel	{ margin: 5px; border: 2px solid black; }
+.sel 		{ color: red; }
+.guide		{ color: blue; }
+#status 	{ text-align: center; padding-left: 5px; }
+#vardlg 	{ border: solid 1px black;}
+#varNmBox	{ width: 5em; }
+#varStyle	{ width: 5em; }
+#varDefBox	{ width: 15em; }
+#varVal		{ width: 20em; }
+#grpNm		{ width: 5em; }
+#varNm		{ font-weight: bold; font-size: large; }
+#defType	{ font-weight: bolder; font-size: larger; padding: 2px 4px 2px 4px;}
+#varDef		{ font-size: large; }
+#varVal		{ font-size: small; }
+.val		{ width: 3em; padding: 0px; margin: 1px; }
+
+.LevCk		{ font-size: 16px; margin-left: 2px; }
+.LevBx		{ text-align: center; }
+.LevBoxes	{ display: flex; }
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: Ubuntu;
+  background: var(--L1);
+  overflow: hidden; 
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 80px auto;
+  grid-template-areas: 
+    "hdr hdr"
+	"sbar canv";
+}
+#header {
+  grid-area: hdr;
+  background: var(--L1);
+  padding: 5px 0 0 0;
+}
+#headerContent {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+#page {
+  /*display: table; /*block; /*flex; */
+  /*height: 800px; /*calc( 100vh - 25px);  /* calculate the height. Header is 30px */
+  /*width: 1300px; /*100%;*/
+  /*overflow: scroll;*/
+ 
+}
+#sideBar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  grid-area: sbar;
+  background: var(--L1);
+}
+#graphCanvas {
+	grid-area: canv;
+	overflow: hidden;
+    background: white;
+    border: 1px solid black;
+	min-width: 0;
+}
+
+/*  collapsible geometry sidebar */
+/* Remove default bullets */
+ul {
+  list-style-type: none;
+  padding-inline-start: 6px;
+  width: 400px;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "ge3",
+  "version": "1.0.0",
+  "description": "3D graphic drafting editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geneball/ge3.git"
+  },
+  "keywords": [
+    "3D",
+    "graphic",
+    "editor"
+  ],
+  "author": "Gene Ball",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geneball/ge3/issues"
+  },
+  "homepage": "https://github.com/geneball/ge3#readme",
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-is-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "fs-jetpack": "^5.1.0",
+    "moment": "^2.29.4",
+    "three": "^0.149.0",
+    "three-orbitcontrols": "^2.110.3"
+  }
+}
